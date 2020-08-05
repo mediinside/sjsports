@@ -1,0 +1,119 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "응급실안내 &gt; 병원이용안내 &gt; 삼성본병원";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(4,4);
+?>
+</head>
+<body>
+<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="pagetop">
+		<div class="background" style="background-image:url(/public/images/bg-pagetop-0<?php echo $locArr[0];?>.jpg);"></div>
+		<div class="contain">
+			<h2 class="title">응급실안내</h2>
+			<p class="text">가족의 마음으로 정성을 다하는 <br class="mb-show" />삼성본병원입니다.</p>
+		</div>
+	</div>
+	<div id="container" class="bg-scratch">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="guide side-strip">
+			<div class="guide-process">
+				<div class="display">
+					<h3 class="display-title">응급실이용절차</h3>
+					<div class="contain">
+						<ol class="process-list">
+							<li>
+								<i class="step pct-0"></i>
+								<div class="panel">
+									<p>응급실 <br class="mb-hide" />방문</p>
+								</div>
+							</li>
+							<li>
+								<i class="step pct-25"></i>
+								<div class="panel">
+									<p>접수</p>
+								</div>
+							</li>
+							<li>
+								<i class="step pct-50"></i>
+								<div class="panel">
+									<p>통원치료 안내, <br class="mb-hide" />응급수술 / 입원</p>
+								</div>
+							</li>
+							<li>
+								<i class="step pct-75"></i>
+								<div class="panel">
+									<p>수납</p>
+								</div>
+							</li>
+							<li>
+								<i class="step pct-100"></i>
+								<div class="panel">
+									<p>귀가</p>
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+			<div class="guide-emphasis">
+				<div class="display">
+					<div class="background"><img src="/public/images/bg-guide-emphasis.jpg" alt="" class="block" /></div>
+					<div class="contain">
+						<i class="ip-icon-mission-symbol"></i>
+						<p class="highlight">
+							<span>삼성본병원에서는</span>
+							<strong>응급실 24시간 진료합니다.</strong>
+						</p>
+						<p class="small">응급환자의 보다 신속하고 빠른 치료를 위해 <br class="mb-show" />노력하고 있습니다.</p>
+					</div>
+				</div>
+			</div>
+			<div class="guide-contents">
+				<div class="display">
+					<h3 class="display-title">응급실이용안내</h3>
+					<div class="contain">
+						<ol class="guide-label">
+							<li>
+								<div class="panel">
+									<div class="header">
+										<i class="counter"></i>
+										<h4 class="title">
+											<strong>응급실 접수</strong>
+										</h4>
+									</div>
+									<div class="description">
+										<ul class="list">
+											<li>연중 무휴 24시간 접수 하실 수 있습니다.</li>
+											<li>응급실 접수처에서 진료신청서를 작성하신 후 건강보험증 등 필요한 서류를 제출하시고 접수하시면 됩니다.</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="panel">
+									<div class="header">
+										<i class="counter"></i>
+										<h4 class="title">
+											<strong>입원수속절차</strong>
+										</h4>
+									</div>
+									<div class="description">
+										<ul class="list">
+											<li>담당의사가 진료 후 응급수술, 입원, 통원치료를 결정합니다.</li>
+											<li>입원 결정을 받으신 분은 담당 의사로 부터 입원 결정서를 발급 받아 입원 수속을 마친 후 간호사의 안내를 받아 병실에 입원합니다.</li>
+										</ul>
+									</div>
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+			<?php include_once "connect.html"; ?>
+		</div>
+	</div>
+<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</body>
+</html>

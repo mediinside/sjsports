@@ -1,0 +1,108 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "세종스포츠정형외과";
+    include_once $GP -> HOME."main_lib/main_proc.php";
+	$Main_Slide	= Main_Slide();
+	$locArr = array(0);
+?>
+<script type="text/javascript">
+	function closeSlidePopup() {
+		var slidePopop = $('#slide-popup');
+		if (slidePopop.find('[name="chkbox"]').is(':checked'))
+			setCookie('slide-popup','done',2);
+		else {
+			setCookie('slide-popup');
+		}
+		slidePopop.hide();
+	}
+	console.log(getCookie('slide-popup'));
+	if (getCookie('slide-popup') != 'done') {
+		$('#slide-popup').show();
+	}else{
+		$('#slide-popup').hide();
+	}
+	function setCookie(name, value, expiredays){
+		var todayDate = new Date();
+		todayDate.setDate( todayDate.getDate() + expiredays );
+		document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+	}
+	function getCookie( name ){
+		var nameOfCookie = name + "=";
+		var x = 0;
+		while ( x <= document.cookie.length )
+		{
+			var y = (x+nameOfCookie.length);
+			if ( document.cookie.substring( x, y ) == nameOfCookie ) {
+				if ( (endOfCookie=document.cookie.indexOf( ";", y )) == -1 )
+					endOfCookie = document.cookie.length;
+				return unescape( document.cookie.substring( y, endOfCookie ) );
+			}
+			x = document.cookie.indexOf( " ", x ) + 1;
+			if ( x == 0 )
+			break;
+		}
+		return;
+	}
+</script>
+</head>
+<body>
+<!-- 상단 배너 -->
+<div id="headBanner">
+	<div class="slide">
+		<ul class="swiper-wrapper" style="overflow: hidden;">
+			<?=$Main_Slide?>
+		</ul>
+	</div>
+	<div class="slideControl">
+		<span class="control">
+			<span class="slidePage">
+			</span>
+			<span class="btn">
+				<button type="button" class="btnStop" onclick="topBannerControl(this,'stop')">정지</button>
+				<button type="button" class="btnStart" onclick="topBannerControl(this,'start')">플레이</button>
+			</span>
+		</span>
+		<label><input name="topChk" type="checkbox"> <span>오늘 하루 열지 않음</span></label>
+		<button type="button" class="btnClose" onclick="closeTopBanner('topChk');">배너 닫기</button>
+	</div>
+	<script>
+	if(getCookie('headBanner') === 'done') {
+		document.getElementById('headBanner').style.display = 'none';
+	}
+	function closeTopBanner(name) {
+		document.getElementById('headBanner').style.display = 'none';
+		var topBanner = $('#headBanner');
+		if (topBanner.find('[name="'+name+'"]').is(':checked')) {
+			setCookie('headBanner','done', 1);
+			topBanner.slideUp(300);
+		}
+	}
+	function topBannerControl(ele, state) {
+		var $this = $(ele);
+		if (state === 'stop') {
+			$this.parent().addClass('stop');
+			topBanner.autoplay.stop();
+		} else {
+			$this.parent().removeClass('stop');
+			topBanner.autoplay.start();
+		}
+	}
+	var topBanner = new Swiper('#headBanner .slide', {
+		effect: 'fade',
+		loop: true,
+		speed: 500,
+		autoplay: {
+			delay: 3000,
+		},
+		pagination: {
+			el: '#headBanner .slidePage',
+			clickable: true,
+			renderBullet: function (index, className) {
+				return '<a href="#" class="' + className + '">' + (index + 1) + '</a>';
+			}
+		}
+	});
+	</script>
+</div>
+<!-- //상단 배너 -->

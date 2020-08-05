@@ -1,0 +1,104 @@
+@charset "utf-8";
+
+/* Thin은 Light에서 Weight값을 light로 합니다. */
+@font-face {
+font-family: "Noto Sans KR";
+src:url(font/NotoSansKR/NotoSansKR-Light.eot);
+src:url(font/NotoSansKR/NotoSansKR-Light.eot?#iefix) format("embedded-opentype"),url(font/NotoSansKR/NotoSansKR-Light.woff) format("woff"),url(font/NotoSansKR/NotoSansKR-Light.ttf) format("truetype");
+font-weight:300;
+font-style:normal;
+}
+/* Demilight는 Regular에서 Weight값을 light로 합니다. */
+@font-face {
+font-family: "Noto Sans KR";
+src:url(font/NotoSansKR/NotoSansKR-Regular.eot);
+src:url(font/NotoSansKR/NotoSansKR-Regular.eot?#iefix) format("embedded-opentype"),url(font/NotoSansKR/NotoSansKR-Regular.woff) format("woff"),url(font/NotoSansKR/NotoSansKR-Regular.ttf) format("truetype");
+font-weight:400;
+font-style:normal;
+}
+
+@font-face {
+font-family: "Noto Sans KR";
+src:url(font/NotoSansKR/NotoSansKR-Medium.eot);
+src:url(font/NotoSansKR/NotoSansKR-Medium.eot?#iefix) format("embedded-opentype"),url(font/NotoSansKR/NotoSansKR-Medium.woff) format("woff"),url(font/NotoSansKR/NotoSansKR-Medium.ttf) format("truetype");
+font-weight:500;
+font-style:normal;
+}
+
+@font-face {
+font-family: "Noto Sans KR";
+src:url(font/NotoSansKR/NotoSansKR-Bold.eot);
+src:url(font/NotoSansKR/NotoSansKR-Bold.eot?#iefix) format("embedded-opentype"),url(font/NotoSansKR/NotoSansKR-Bold.woff) format("woff"),url(font/NotoSansKR/NotoSansKR-Bold.ttf) format("truetype");
+font-weight:700;
+font-style:normal;
+}
+
+@font-face {
+font-family: "NanumSquare";
+src:url(font/NanumSquare/NanumSquare-Light.eot);
+src:url(font/NanumSquare/NanumSquare-Light.eot?#iefix) format("embedded-opentype"),url(font/NanumSquare/NanumSquare-Light.woff) format("woff"),url(font/NanumSquare/NanumSquare-Light.ttf) format("truetype");
+font-weight:300;
+font-style:normal;
+}
+
+@font-face {
+font-family: "NanumSquare";
+src:url(font/NanumSquare/NanumSquare-Regular.eot);
+src:url(font/NanumSquare/NanumSquare-Regular.eot?#iefix) format("embedded-opentype"),url(font/NanumSquare/NanumSquare-Regular.woff) format("woff"),url(font/NanumSquare/NanumSquare-Regular.ttf) format("truetype");
+font-weight:400;
+font-style:normal;
+}
+
+@font-face {
+font-family: "NanumSquare";
+src:url(font/NanumSquare/NanumSquare-Bold.eot);
+src:url(font/NanumSquare/NanumSquare-Bold.eot?#iefix) format("embedded-opentype"),url(font/NanumSquare/NanumSquare-Bold.woff) format("woff"),url(font/NanumSquare/NanumSquare-Bold.ttf) format("truetype");
+font-weight:500;
+font-style:normal;
+}
+
+/* @font-face {
+font-family: "NanumMyeongjo Bold";
+src:url(font/NanumMyeongjo/NanumMyeongjo-Bold.eot);
+src:url(font/NanumMyeongjo/NanumMyeongjo-Bold.eot?#iefix) format("embedded-opentype"),url(font/NanumMyeongjo/NanumMyeongjo-Bold.woff) format("woff"),url(font/NanumMyeongjo/NanumMyeongjo-Bold.ttf) format("truetype");
+font-weight:normal;
+font-style:normal;
+}
+
+@font-face {
+font-family: "NanumMyeongjo";
+src:url(font/NanumMyeongjo/NanumMyeongjo-Regular.eot);
+src:url(font/NanumMyeongjo/NanumMyeongjo-Regular.eot?#iefix) format("embedded-opentype"),url(font/NanumMyeongjo/NanumMyeongjo-Regular.woff) format("woff"),url(font/NanumMyeongjo/NanumMyeongjo-Regular.ttf) format("truetype");
+font-weight:400;
+font-style:normal;
+}
+
+@font-face {
+font-family: "NanumMyeongjo";
+src:url(font/NanumMyeongjo/NanumMyeongjo-Bold.eot);
+src:url(font/NanumMyeongjo/NanumMyeongjo-Bold.eot?#iefix) format("embedded-opentype"),url(font/NanumMyeongjo/NanumMyeongjo-Bold.woff) format("woff"),url(font/NanumMyeongjo/NanumMyeongjo-Bold.ttf) format("truetype");
+font-weight:700;
+font-style:normal;
+}
+
+@font-face {
+font-family: "NanumMyeongjo";
+src:url(font/NanumMyeongjo/NanumMyeongjo-ExtraBold.eot);
+src:url(font/NanumMyeongjo/NanumMyeongjo-ExtraBold.eot?#iefix) format("embedded-opentype"),url(font/NanumMyeongjo/NanumMyeongjo-ExtraBold.woff) format("woff"),url(font/NanumMyeongjo/NanumMyeongjo-ExtraBold.ttf) format("truetype");
+font-weight:900;
+font-style:normal;
+} */
+
+
+
+/* Bootstrap reset 변경시 */
+html{font-size: 16px;}
+body{font-size: 16px; font-family: "Noto Sans KR", sans-serif; color: #000;}
+h1, h2, h3, h4 ,h5 ,h6, strong, table th, dl dt{margin: 0;}
+a{color: inherit;}
+a:hover{text-decoration: none; color: inherit;}
+button{}
+dl, dd{margin: 0;}
+p{margin: 0;}
+
+

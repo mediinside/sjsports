@@ -1,0 +1,122 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+$page_title = "회원가입 &gt; 세종스포츠정형외과";
+include_once $GP -> INC_WWW . "/head.php";
+$locArr = Array(100,1);
+
+$sel_email = $C_Func->makeSelect('email_sel', $GP -> EMAIL , $email_sel, " title='도메인 선택'class='i-select' ",'직접선택');
+$sel_mobile = $C_Func->makeSelect('mb_mobile1', $GP -> MOBILE , $mb_mobile1, " title='휴대폰 앞자리 선택' class='i-select' ",'선택');
+
+if($agree1 !="Y" || $agree2 !="Y"){
+		$C_Func->put_msg_and_go("올바른 경로로 접근 바랍니다", "/member/join.html");
+		exit();
+}
+?>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/jquery.alphanumeric.js"></script>
+<script type="text/javascript" src="/js/mem/mem_join2.js"></script>
+</head>
+<body>
+<?php include_once  $GP -> INC_WWW . "/header.php"; ?>
+<div id="pagetop">
+	<div class="background" style="background-image:url(/public/images/bg-pagetop-01.jpg);"></div>
+	<div class="contain">
+		<h2 class="title">회원가입</h2>
+		<p class="text">세종스포츠정형외과의 방문을 환영합니다.</p>
+	</div>
+</div>
+<div id="container">
+	<div class="deco-header">
+		<p class="highlight"><span>세종스포츠정형외과에</span> <br class="mb-show" /><strong>오신것을 환영합니다.</strong></p>
+		<p class="decoration tup">samsung bon hospital</p>
+	</div>
+	<div id="article">
+		<form action="http://samsungbon.com/member/proc/mem_proc.html" id="frmJoin" name="frmJoin" class="contain" method="post" novalidate autocomplete="off">
+        	<input type="hidden" value="MEM_REG" id="mode" name="mode">
+			<div id="sign-up-entry">
+				<div class="header">
+					<i class="ip-icon-sign-logo"></i>
+					<p>회원정보 입력 단계입니다. 2/3</p>
+				</div>
+				<div class="panel">
+					<ul class="account-data">
+						<li><label class="i-label">
+							<span class="i-placeholder">이메일주소를 입력하세요.</span>
+							<input type="text" class="i-text full" id="mb_id" name="mb_id" />
+						</label></li>
+						<li><label class="i-label">
+							<span class="i-placeholder">비밀번호를 입력하세요.</span>
+							<input type="password" class="i-text full" id="mb_pwd" name="mb_pwd" />
+						</label></li>
+						<li><label class="i-label">
+							<span class="i-placeholder">비밀번호를 한번 더 입력하세요.</span>
+							<input type="password" class="i-text full" id="mb_pwd_ok" name="mb_pwd_ok"/>
+						</label></li>
+					</ul>
+				</div>
+				<div class="panel">
+					<ul class="user-data">
+						<li>
+							<dl>
+								<dt><strong class="i-title">이름</strong></dt>
+								<dd>
+									<input type="text" class="i-text" id="mb_name" name="mb_name"/>
+									<p class="entry-guide">공백없이 입력해주세요</p>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dd>
+									<p class="acceptance">이벤트, 새로운 소식 등 관련 정보를 수신합니다.</p>
+									<label class="ui-check">
+										<input type="radio" id="mb_email_flag" name="mb_email_flag" value="Y" />
+										<span class="visible bicon-check"></span>
+										<span class="label">수신동의</span>
+									</label>
+									<label class="ui-check">
+										<input type="radio" id="mb_email_flag" name="mb_email_flag" value="N" />
+										<span class="visible bicon-check"></span>
+										<span class="label">수신거부</span>
+									</label>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt><strong class="i-title">휴대폰</strong></dt>
+								<dd>
+									<?=$sel_mobile?>
+									<span class="empty">-</span>
+									<input type="text" class="i-text" id="mb_mobile2" name="mb_mobile2" />
+									<span class="empty">-</span>
+									<input type="text" class="i-text" id="mb_mobile3" name="mb_mobile3" />
+								</dd>
+								<dd>
+									<p class="acceptance">이벤트, 새로운 소식 등 관련 정보를 수신합니다.</p>
+									<label class="ui-check">
+										<input type="radio" id="mb_sms" name="mb_sms" value="Y" />
+										<span class="visible bicon-check"></span>
+										<span class="label">수신동의</span>
+									</label>
+									<label class="ui-check">
+										<input type="radio" id="mb_sms" name="mb_sms" value="N" />
+										<span class="visible bicon-check"></span>
+										<span class="label">수신거부</span>
+									</label>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="footer">
+					<button class="btn-signup"><span>가입완료</span></button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<?php include_once  $GP -> INC_WWW . "/footer.php"; ?>
+</body>
+</html>

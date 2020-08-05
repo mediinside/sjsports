@@ -1,0 +1,90 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "전문의상담 &gt; 병원이용안내 &gt; 삼성본병원";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(4,5);
+?>
+</head>
+<body>
+<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="pagetop">
+		<div class="background" style="background-image:url(/public/images/bg-pagetop-0<?php echo $locArr[0];?>.jpg);"></div>
+		<div class="contain">
+			<h2 class="title">전문의 상담</h2>
+			<p class="text">가족의 마음으로 정성을 다하는 <br class="mb-show" />삼성본병원입니다.</p>
+		</div>
+	</div>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="board side-strip">
+			<div class="deco-header">
+				<p class="highlight"><strong class="middle">전문의 상담</strong></p>
+				<p class="decoration tup">consultation</p>
+			</div>
+			<div class="contain">
+				<div class="board-view">
+					<div class="header">
+						<h3 class="subject">제목</h3>
+						<dl class="info">
+							<dt>구분</dt><dd class="spot">목</dd>
+							<dt>작성일</dt><dd>2018.01.01</dd>
+							<dt>첨부파일</dt><dd><a href="#">file.gif</a></dd>
+						</dl>
+					</div>
+					<div class="contents">내용</div>
+				</div>
+				<!-- START 답변이 있을 경우 -->
+				<div class="board-reply">
+					<h4 class="title">안녕하세요. <br class="mb-show" />고객님 문의에 대해 답변드립니다.</h4>
+					<div class="contain">내용</div>
+				</div>
+				<!-- END 답변이 있을 경우 -->
+
+				<!-- START 관리자 권한일 경우 -->
+				<div class="board-reply">
+					<h4 class="title">안녕하세요. <br class="mb-show" />고객님 문의에 대해 답변드립니다.</h4>
+
+					<!-- START 답변이 있을 경우 -->
+					<div class="contain">내용</div>
+					<ul class="util">
+						<li><a href="javascript:void(0)">수정</a></li>
+						<li><a href="javascript:void(0)">삭제</a></li>
+					</ul>
+					<!-- END 답변이 있을 경우 -->
+
+					<!-- START 답변 등록 / 수정 -->
+					<div class="contain">
+						<form action="">
+							<textarea class="i-text"></textarea>
+							<button class="btn-save">저장</button>
+						</form>
+					</div>
+					<!--  END 답변 등록 / 수정 -->
+
+					<!-- START 답변이 없을 경우 -->
+					<div class="contain">
+						<a href="javascript:void(0)" class="btn-reply"><span>답변 등록하기</span></a>
+					</div>
+					<!-- END 답변이 없을 경우 -->
+
+				</div>
+				<!-- END 관리자 권한일 경우 -->
+
+				<div class="btn-group">
+					<div class="btn-lt">
+						<a href="#" class="btn btn-normal"><span>목록으로</span></a>
+					</div>
+					<!-- START 권한 있을 경우 -->
+					<div class="btn-rt">
+						<a href="#" class="btn btn-normal"><span>수정</span></a>
+						<a href="#" class="btn btn-cancel"><span>삭제</span></a>
+					</div>
+					<!-- END 권한 있을 경우 -->
+				</div>
+			</div>
+		</div>
+	</div>
+<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</body>
+</html>

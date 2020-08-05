@@ -1,0 +1,42 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+$page_title = "로그아웃 &gt; 세종스포츠정형외과";
+include_once $GP -> INC_WWW . "/head.php";
+$locArr = Array(100,10);
+
+session_destroy();
+$_SESSION['suserid'] = '';
+?>
+</head>
+<body>
+<?php include_once  $GP -> INC_WWW . "/header.php"; ?>
+<div id="pagetop">
+	<div class="background" style="background-image:url(/public/images/bg-pagetop-01.jpg);"></div>
+	<div class="contain">
+		<h2 class="title">로그아웃</h2>
+		<p class="text">이용해 주셔서 감사합니다.</p>
+	</div>
+</div>
+<div id="container">
+	<div class="deco-header">
+		<p class="highlight"><strong>이용해 주셔서 감사합니다.</strong></p>
+		<p class="decoration tup">samsung bon hospital</p>
+	</div>
+	<div id="article">
+		<div class="contain">
+			<div id="sign-out">
+				<div class="header">
+					<i class="ip-icon-sign-logo"></i>
+					<p>로그아웃이 정상적으로 완료되었습니다.</p>
+				</div>
+				<div class="panel">
+					<a href="/member/login.html" class="btn btn-signin"><span>로그인</span></a>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<?php include_once  $GP -> INC_WWW . "/footer.php"; ?>
+</body>
+</html>

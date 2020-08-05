@@ -1,0 +1,287 @@
+<?php
+	include_once  '../_init.php';
+
+	$title = "주소 찾기";
+	include_once ($GP -> INC_WWW."/inc.addrheader.php");
+	include_once $GP -> CLS . 'class.zipcode.php';
+	$C_Zipcode = new Zipcode();
+
+
+	$obj = $_REQUEST['obj'];
+	$obj1 = $_REQUEST['obj1'];
+	$obj2 = $_REQUEST['obj2'];
+	$obj3 = $_REQUEST['obj3'];
+	$obj4 = $_REQUEST['obj4'];
+	$obj5 = $_REQUEST['obj5'];
+?>
+<!-- 팝업사이즈 365*270 -->
+
+<div class="pop1">
+	<h1 class="pop1_t">우편번호 검색</h1>
+	<!-- pop1_cont_layout -->
+	<section class="pop1_cont_layout">
+		<div class="boxTypeSelect">
+			<ul class="TypeSelectTabs">
+			</ul>
+				<!--input name="show_type" type="radio" value="B" /> 지번
+				<input name="show_type" type="radio" value="F" checked="checked" /> 도로명주소-->
+			<!-- div id="type-b" class="TypeBody">
+				<form id="frm_addr" name="frm_addr" action="?" method="post">
+					<fieldset id="div_1">
+						<legend>우편번호 검색 입력</legend>
+						<h2 class="pop1_t2"> 동/읍/리
+							<input type="text" class="input_type1" size="20" name="search_key" id="search_key" value="<?=$search_key?>" />
+							<span class="button btntype10">
+							<input type="submit" id="serach_submit" value="검색" />
+							</span> <span class="ex">(예시 : 신립, 회현)</span> </h2>						
+						<div id="result_data" class="resultList">
+						</div>						
+					</fieldset>
+				</form>
+			</div -->
+
+			<div id="type-f" class="TypeBody" style="text-align:center;">
+            <form id="frm_addr2" name="frm_addr" action="?" method="post">
+                <input type="hidden" name="currentPage" value="1"/>				<!-- 요청 변수 설정 (현재 페이지) -->
+                <input type="hidden" name="countPerPage" value="100"/>				<!-- 요청 변수 설정 (페이지당 출력 개수) -->
+                <input type="hidden" name="resultType" value="json"/> 			<!-- 요청 변수 설정 (검색결과형식 설정, json) --> 
+                <input type="hidden" name="confmKey" value="U01TX0FVVEgyMDE3MDEwNjE0NTc0NDE4MTE0"/>		<!-- 요청 변수 설정 (승인키) -->
+                <input type="text"  name="keyword" value="" placeholder="주소입력" />						<!-- 요청 변수 설정 (키워드) -->
+                <input type="button" onClick="getAddr();" value="검색"/>
+                    <div class="layer_box1">
+                        <div class="boxBg">
+                            <p><strong>검색방법 : 시/도 및 시/군/구/ 입력</strong><br />
+                            예) 서울시 강남구, 테헤란로(도로명) + 152 (건물번호) </p>
+                            <p class="sm_info">* 도로명 주소가 검색되지 않는 경우는 행정안전부 새주소안내시스템<br />
+                            (<a class="eng" href="http://www.juso.go.kr" target="_blank">http://www.juso.go.kr</a>) 에서 확인하시기 바랍니다.</p>
+                        </div>
+                        
+                    </div>
+                    <div id="result_data_new" class="resultList">
+                    </div>
+				</form>
+			</div>
+		</div>
+	</section>
+	<!-- //pop1_cont_layout -->
+</div>
+<script type="text/javascript">
+
+	$(document).ready(function(){
+		//엔터키 막기
+		$("*").keypress(function(e){
+			if(e.keyCode==13)
+			{
+				$('#serach_submit').click();
+				return false;
+			}
+			else
+			{
+				return true;
+			}
+		});
+
+		$('#sido').change(function(){
+			var val = $(this).val();
+
+			var data = "sido=" + val;
+
+			$.ajax({
+				url: "/inc/gugun_json.php",
+				type: 'POST',
+				data: data,
+				dataType :"json",
+				contentTypeString : "text/xml; charset=utf-8",
+				success: function(data){
+					$('#gugun').html('');
+					$('#gugun').append("<option value=''>::: 선택 :::</option>");
+					if (data.msg) {
+						$.each(data.result, function(i) {
+								$('#gugun').append("<option value='" + data.result[i]['zc_gugun'] + "'>"  + data.result[i]['zc_gugun'] + " </option>");
+						});
+					}
+				}
+			});
+
+		});
+
+		$('#serach_submit_new').click(function(){
+
+			var data = $('#frm_addr2').serialize();
+
+			$.ajax({
+				url: "/inc/address_data3.php",
+				type: 'POST',
+				data: data,
+				contentTypeString : "text/xml; charset=utf-8",
+				success: function(data){
+					$('#result_data_new').html('');
+					$('#result_data_new').html(data);
+				}
+			});
+			return false;
+		});
+
+/*
+		$("input:radio[name='rdtype']").click(function(){
+				var val = $(this).val();
+
+				$("#divRoadNameSearch").hide();
+				$("#divBldgNameSearch").hide();
+				$("#divDongNameSearch").hide();
+				$("#guideTxtDong").hide();
+				$("#guideTxtRoad").hide();
+				$("#guideTxtBdnm").hide();
+
+				if(val == "D") {
+					$("#divDongNameSearch").show();
+					$("#guideTxtDong").show();
+				}else if(val == "R") {
+					$("#divRoadNameSearch").show();
+					$("#guideTxtRoad").show();
+				}else {
+					$("#divBldgNameSearch").show();
+					$("#guideTxtBdnm").show();
+				}
+		});
+*/
+
+		$("#divDongNameSearch").hide();
+		$("#divRoadNameSearch").show();
+		$("#divBldgNameSearch").hide();
+		$("#guideTxtDong").hide();
+		$("#guideTxtRoad").show();
+		$("#guideTxtBdnm").hide();
+
+		$('.boxTypeSelect').tabs();
+		$('.layer_box1').tabs({active:1});
+		$('.Type2-D').click(function(){
+			$("#divDongNameSearch").show();
+			$("#divRoadNameSearch").hide();
+			$("#divBldgNameSearch").hide();			
+			$("#guideTxtDong").show();
+			$("#guideTxtRoad").hide();
+			$("#guideTxtBdnm").hide();
+			$('#rdtype').val('D');
+		});
+		$('.Type2-R').click(function(){
+			$("#divDongNameSearch").hide();
+			$("#divRoadNameSearch").show();
+			$("#divBldgNameSearch").hide();			
+			$("#guideTxtDong").hide();
+			$("#guideTxtRoad").show();
+			$("#guideTxtBdnm").hide();
+			$('#rdtype').val('R');
+		});
+		$('.Type2-B').click(function(){
+			$("#divDongNameSearch").hide();
+			$("#divRoadNameSearch").hide();
+			$("#divBldgNameSearch").show();			
+			$("#guideTxtDong").hide();
+			$("#guideTxtRoad").hide();
+			$("#guideTxtBdnm").show();
+			$('#rdtype').val('B');
+		});
+
+		$('#search_key').focus();
+
+		$('#serach_submit').click(function(){
+
+
+			if($('#search_key').val().replace(/\s/g, "") == '') {
+				alert('동/면/리를 입력하세요.');
+				$('#search_key').focus();
+				return false;
+			}
+
+			var data = "search_key=" + $('#search_key').val();
+
+			$.ajax({
+				url: "/inc/address_data1.php",
+				type: 'POST',
+				data: data,
+				contentTypeString : "text/xml; charset=utf-8",
+				success: function(data){
+					$('#result_data').html('');
+					$('#result_data').html(data);
+				}
+			});
+			return false;
+		});
+
+	});
+
+		function parent_addr(result,type) {
+			var rst = result.split("^");
+			
+			/*
+			if(type == "B") {				
+				var zipAr = rst[0].split("-");
+				var zip1 = zipAr[0];
+				var zip2 = zipAr[1];
+
+				$(opener.document).find('#<?=$obj?>').val(zip1);
+				$(opener.document).find('#<?=$obj1?>').val(zip2);
+				$(opener.document).find('#<?=$obj2?>').val(rst[1]);
+				$(opener.document).find('#<?=$obj3?>').focus();
+			}else{
+				var zip1 = rst[0].substring(0,3);
+				var zip2 = rst[0].substring(3,6);
+
+				$(opener.document).find('#<?=$obj?>').val(zip1);
+				$(opener.document).find('#<?=$obj1?>').val(zip2);
+				$(opener.document).find('#<?=$obj2?>').val(rst[2]);
+				$(opener.document).find('#<?=$obj4?>').val(rst[1]);
+				$(opener.document).find('#<?=$obj5?>').focus();
+			}
+			*/
+			//var zip1 = rst[0].substring(0,3);
+			//var zip2 = rst[0].substring(3,6);
+			$(opener.document).find('#<?=$obj?>').val(rst[0]);
+			$(opener.document).find('#<?=$obj2?>').val(rst[1]);
+			$(opener.document).find('#<?=$obj3?>').focus();
+			window.close();
+			//parent.modalclose();
+	}
+
+function getAddr(){
+	// AJAX 주소 검색 요청
+	$.ajax({
+		url:"http://www.juso.go.kr/addrlink/addrLinkApiJsonp.do"	
+		,type:"post"
+		,data:$("#frm_addr2").serialize() 							
+		,dataType:"jsonp"										 
+		,crossDomain:true
+		,success:function(jsonStr){									
+			$("#list").html("");								
+			var errCode = jsonStr.results.common.errorCode;
+			var errDesc = jsonStr.results.common.errorMessage;
+			if(errCode != "0"){ 
+				alert(errCode+"="+errDesc);
+			}else{
+				if(jsonStr!= null){
+					makeListJson(jsonStr);						
+				}
+			}
+		}
+		,error: function(xhr,status, error){
+			alert("에러발생");									
+		}
+	});
+}
+function makeListJson(jsonStr){
+	var htmlStr = "";
+	htmlStr += '<p class="TxtInfo">아래의 주소중에서 해당되는 주소를 클릭 해주세요.</p>';
+	htmlStr += '<div class="pop1_cont2"><ul>';
+	// jquery를 이용한 JSON 결과 데이터 파싱
+	$(jsonStr.results.juso).each(function(){
+		var p_addr = this.zipNo+"^"+this.roadAddr+"^"+this.jibunAddr;
+		htmlStr += '<li><a href="javascript:;" onclick=\'parent_addr("'+p_addr+'","N");\'>['+this.zipNo+'] '+this.roadAddr+ '<br>' +this.jibunAddr+'<a>';
+		htmlStr += "</li>";
+	});
+	htmlStr += "</ul></div>";
+	// 결과 HTML을 FORM의 결과 출력 DIV에 삽입
+	$("#result_data_new").html(htmlStr);
+}	
+</script>
+</body></html>

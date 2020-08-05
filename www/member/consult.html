@@ -1,0 +1,57 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+$page_title = "마이페이지 &gt; 세종스포츠정형외과";
+include_once $GP -> INC_WWW . "/head.php";
+$locArr = Array(100,2);
+
+$index_page = "consult.html";
+$query_page = "query.php";
+
+if(!$jb_code) {
+    $jb_code="20";
+}
+
+$mpYN ="Y";
+
+?>
+</head>
+<body>
+<?php include_once  $GP -> INC_WWW . "/header.php"; ?>
+<div id="pagetop">
+	<div class="background" style="background-image:url(/public/images/bg-pagetop-01.jpg);"></div>
+	<div class="contain">
+		<h2 class="title">마이페이지</h2>
+		<p class="text">회원정보수정 과 상담 및 예약을 확인하실 수 있습니다.</p>
+	</div>
+</div>
+<div id="container">
+	<div id="article" class="mypage">
+		<div class="tab selection link">
+			<a href="javascript:void(0)" class="trigger mb">
+				<span></span>
+				<i class="bicon-arrow-down"></i>
+			</a>
+			<ul class="list">
+				<li><a href="/member/mypage.html">회원정보수정</a></li>
+				<li><a href="/member/passch.html">비밀번호 변경</a></li>
+				<li><a href="/member/memout.html">회원탈퇴</a></li>
+				<li class="on"><a href="/member/consult.html">전문의 상담</a></li>
+				<li><a href="/member/customer.html">고객의 소리</a></li>
+			</ul>
+		</div>
+		<div id="member-board">
+			<div class="deco-header">
+				<p class="highlight"><strong>전문의 상담</strong></p>
+				<p class="decoration tup">medical consultation</p>
+			</div>
+			<div class="contain">
+				<?php include $GP -> INC_PATH ."/board_inc.php"; ?>
+				<!-- END 페이지 - 숫자 최대 5개 -->
+			</div>
+		</div>
+	</div>
+</div>
+<?php include_once  $GP -> INC_WWW . "/footer.php"; ?>
+</body>
+</html>

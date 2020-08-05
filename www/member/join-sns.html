@@ -1,0 +1,77 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+$page_title = "회원가입 &gt; 세종스포츠정형외과";
+include_once $GP -> INC_WWW . "/head.php";
+$locArr = Array(100,1);
+
+
+
+
+$sel_email = $C_Func->makeSelect('email_sel', $GP -> EMAIL , $email_sel, " title='도메인 선택'class='i-select' ",'직접선택');
+$sel_mobile = $C_Func->makeSelect('mb_mobile1', $GP -> MOBILE , $mb_mobile1, " title='휴대폰 앞자리 선택' class='i-select' ",'선택');
+
+if($agree1 !="Y" || $agree2 !="Y"){
+		$C_Func->put_msg_and_go("올바른 경로로 접근 바랍니다", "/member/join.html");
+		exit();
+}
+?>
+</head>
+<body>
+<?php include_once  $GP -> INC_WWW . "/header.php"; ?>
+<div id="pagetop">
+	<div class="background" style="background-image:url(/public/images/bg-pagetop-01.jpg);"></div>
+	<div class="contain">
+		<h2 class="title">회원가입</h2>
+		<p class="text">세종스포츠정형외과의 방문을 환영합니다.</p>
+	</div>
+</div>
+<div id="container">
+	<div class="deco-header">
+		<p class="highlight"><span>세종스포츠정형외과에</span> <br class="mb-show" /><strong>오신것을 환영합니다.</strong></p>
+		<p class="decoration tup">samsung bon hospital</p>
+	</div>
+	<div id="article">
+		<form action="http://samsungbon.com/member/proc/mem_proc.html" id="frmJoin" name="frmJoin" class="contain" method="post" novalidate autocomplete="off">
+        	<input type="hidden" value="MEM_MODIFY2" id="mode" name="mode">
+            <input type="hidden" name="mb_id" id="mb_id" value="<?=$mb_id?>" />
+            <input type="text" name="mb_code" id="mb_code" value="<?=$mb_code?>" />
+			<div id="sign-up-entry">
+				<div class="header">
+					<i class="ip-icon-sign-logo"></i>
+					<p>회원정보 입력 단계입니다. 2/3</p>
+				</div>
+				<div class="panel">
+					<ul class="user-data">
+						<li>
+							<dl>
+								<dt><strong class="i-title">이름</strong></dt>
+								<dd>
+									<input type="text" class="i-text" id="mb_name" name="mb_name"/>
+									<p class="entry-guide">공백없이 입력해주세요</p>
+								</dd>
+							</dl>
+						</li>
+						<li>
+							<dl>
+								<dt><strong class="i-title">이메일</strong></dt>
+								<dd>
+									<input type="text" class="i-text" placeholder="아이디" id="mb_email1" name="mb_email1" />
+									<span class="empty">@</span>
+									<input type="text" class="i-text" placeholder="도메인" id="mb_email2" name="mb_email2" />
+									<?=$sel_email?>
+								</dd>
+							</dl>
+						</li>
+					</ul>
+				</div>
+				<div class="footer">
+					<button class="btn-signup"><span>가입완료</span></button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<?php include_once  $GP -> INC_WWW . "/footer.php"; ?>
+</body>
+</html>

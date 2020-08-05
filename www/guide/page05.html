@@ -1,0 +1,40 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "전문의상담 &gt; 커뮤니티 &gt; 삼성본병원";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(5,5);
+
+    $index_page = "page05.html";
+	$query_page = "query.php";
+
+	if(!$jb_code) {
+  		$jb_code="20";
+	}
+   $mpYN ="N";
+?>
+</head>
+<body>
+<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="pagetop">
+		<div class="background" style="background-image:url(/public/images/bg-pagetop-0<?php echo $locArr[0];?>.jpg);"></div>
+		<div class="contain">
+			<h2 class="title">전문의 상담</h2>
+			<p class="text">가족의 마음으로 정성을 다하는 <br class="mb-show" />삼성본병원입니다.</p>
+		</div>
+	</div>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="board side-strip">
+			<div class="deco-header">
+				<p class="highlight"><strong class="middle">전문의 상담</strong></p>
+				<p class="decoration tup">medical consultation</p>
+			</div>
+			<div class="contain">
+				<?php include $GP -> INC_PATH ."/board_inc.php"; ?>
+			</div>
+		</div>
+	</div>
+<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</body>
+</html>

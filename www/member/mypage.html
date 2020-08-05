@@ -1,0 +1,156 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+$page_title = "마이페이지 &gt; 세종스포츠정형외과";
+include_once $GP -> INC_WWW . "/head.php";
+$locArr = Array(100,1);
+
+include_once $GP -> INC_WWW . '/inc.login_check.php';
+include_once($GP -> CLS."/class.member.php");
+    $C_Member 	= new Member;
+
+    $args = "";
+    $args['mb_code'] = $_SESSION['susercode'];
+    $data = $C_Member->Mem_Info($args);
+
+    if($data) {
+        extract($data);
+
+        $arr_post = explode("-", $mb_zip_code);
+        $mb_post1 = $arr_post[0];
+        $mb_post2 = $arr_post[1];
+
+        $arr_mobile = explode("-", $mb_mobile);
+        $mb_mobile1 = $arr_mobile[0];
+        $mb_mobile2 = $arr_mobile[1];
+        $mb_mobile3 = $arr_mobile[2];
+
+        $arr_email = explode("@", $mb_email);
+        $mb_email1 = $arr_email[0];
+        $mb_email2 = $arr_email[1];
+
+        $sel_mobile = $C_Func->makeSelect('mb_mobile1', $GP -> MOBILE , $mb_mobile1, " title='휴대폰 앞자리 선택' class='i-select' ",'선택');
+        $sel_email = $C_Func->makeSelect('email_sel', $GP -> EMAIL , $mb_email2, "class='i-select'",'직접선택');
+    }
+?>
+</head>
+<body>
+<?php include_once  $GP -> INC_WWW . "/header.php"; ?>
+<div id="pagetop">
+	<div class="background" style="background-image:url(/public/images/bg-pagetop-01.jpg);"></div>
+	<div class="contain">
+		<h2 class="title">마이페이지</h2>
+		<p class="text">회원정보수정 과 상담 및 예약을 확인하실 수 있습니다.</p>
+	</div>
+</div>
+<div id="container">
+	<div id="article" class="mypage">
+		<div class="tab selection link">
+			<a href="javascript:void(0)" class="trigger mb">
+				<span></span>
+				<i class="bicon-arrow-down"></i>
+			</a>
+			<ul class="list">
+				<li class="on"><a href="/member/mypage.html">회원정보수정</a></li>
+				<li><a href="/member/passch.html">비밀번호 변경</a></li>
+				<li><a href="/member/memout.html">회원탈퇴</a></li>
+				<li><a href="/member/consult.html">전문의 상담</a></li>
+				<li><a href="/member/customer.html">고객의 소리</a></li>
+			</ul>
+		</div>
+		<div id="edit-member-info">
+			<div class="deco-header">
+				<p class="highlight"><strong>회원정보수정</strong></p>
+				<p class="decoration tup">edit membership information</p>
+			</div>
+			<form action="?" id="frmJoin" name="frmJoin"  method="post" class="contain" novalidate autocomplete="off">
+            	<input type="hidden" value="MEM_MODIFY" id="mode" name="mode">
+                <input type="hidden" name="old_email" id="old_id" value="<?=$mb_id?>" />
+                <input type="hidden" name="old_email" id="old_email" value="<?=$mb_email?>" />
+                <input type="hidden" name="mb_code" id="mb_code" value="<?=$mb_code?>" />
+				<table class="entry">
+					<caption>회원정보 수정</caption>
+					<tbody>
+						<tr>
+							<th scope="row">이름</th>
+							<td colspan="2">
+								<input type="text" class="i-text" readonly id="mb_name" name="mb_name" value="<?=$mb_name?>" />
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">이메일</th>
+							<td>
+								<input type="text" class="i-text" placeholder="아이디" id="mb_email1" name="mb_email1" value="<?=$mb_email1?>">
+								<span class="empty">@</span>
+								<input type="text" class="i-text" placeholder="도메인" id="mb_email2" name="mb_email2" value="<?=$mb_email2?>">
+								<?=$sel_email?>
+							</td>
+							<td>
+								<div class="acceptance">
+									<p>이벤트, 새로운 소식 등 관련 정보를 수신합니다.</p>
+									<label class="i-checkbox left">
+										<input type="radio" value="Y" id="mb_email_flag" name="mb_email_flag" <? if($mb_email_flag == 'Y'){ echo "checked"; } ?> />
+										<i class="bicon-check"></i>
+										<span class="visible">수신동의</span>
+									</label>
+									<label class="i-checkbox left">
+										<input type="radio" value="N" id="mb_email_flag" name="mb_email_flag" <? if($mb_email_flag == 'N'){ echo "checked"; } ?> />
+										<i class="bicon-check"></i>
+										<span class="visible">수신거부</span>
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">전화번호</th>
+							<td>
+								<?=$sel_mobile?>
+								<span class="empty">-</span>
+								<input type="text" class="i-text" id="mb_mobile2" name="mb_mobile2" value="<?=$mb_mobile2?>">
+								<span class="empty">-</span>
+								<input type="text" class="i-text" id="mb_mobile3" name="mb_mobile3" value="<?=$mb_mobile3?>">
+							</td>
+							<td>
+								<div class="acceptance">
+									<p>이벤트, 새로운 소식 등 관련 정보를 수신합니다.</p>
+									<label class="i-checkbox left">
+										<input type="radio" value="Y" id="mb_sms" name="mb_sms" <? if($mb_sms == 'Y'){ echo "checked"; } ?>/>
+										<i class="bicon-check"></i>
+										<span class="visible">수신동의</span>
+									</label>
+									<label class="i-checkbox left">
+										<input type="radio" value="N" id="mb_sms" name="mb_sms" <? if($mb_sms == 'N'){ echo "checked"; } ?>/>
+										<i class="bicon-check"></i>
+										<span class="visible">수신거부</span>
+									</label>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th scope="row">현재 비밀번호</th>
+							<td colspan="2" class="password">
+								<label class="i-label">
+									<span class="i-placeholder">비밀번호를 한번 더 입력하세요.</span>
+									<input type="password" id="mb_pwd" name="mb_pwd" class="i-text" />
+								</label>
+								<p class="explain"><span>6~16자의 영문과 숫자조합. 대소문자, 특수문자 사용가능</span></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="btn-group">
+					<div class="btn-rt">
+						<a href="#" id="btn_submit" class="btn btn-normal"><span>수정완료</span></a>
+						<a href="#" id="btn_cancel" class="btn btn-cancel"><span>취소</span></a>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<script type='text/javascript' src='/js/jquery.alphanumeric.js'></script>
+<script type='text/javascript' src='/js/jquery.validate.js'></script>
+<script type='text/javascript' src='/js/mem/mem_page2.js'></script>
+<?php include_once  $GP -> INC_WWW . "/footer.php"; ?>
+</body>
+</html>

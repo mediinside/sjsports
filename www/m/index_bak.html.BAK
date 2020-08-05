@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<title>세종스포츠정형외과</title>
+	<meta name="Title" content="세종스포츠정형외과" />
+	<meta name="keywords" content="세종스포츠정형외과">
+	<meta name="description" content="세종스포츠정형외과">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta name="format-detection" content="telephone=no" />
+	<!-- CSS -->
+	<link rel="stylesheet" href="./common/css/default.css">
+	<link rel="stylesheet" href="./common/css/main.css">
+	<!-- //CSS -->
+	<!-- JAVASCRIPT -->
+	<script src="./common/js/libs/jquery.min.js" charset="utf-8"></script>
+	<script src="./common/js/common_front.js" charset="utf-8"></script>
+	<script src="./common/js/ui.js" charset="utf-8"></script>
+	<script src="./common/js/pub.js" charset="utf-8"></script>
+	<script src="./common/js/libs/jquery.scrollbar.min.js"></script>
+	<script src="./common/js/libs/swiper.min.js" charset="utf-8"></script>
+	<script src="./common/js/libs/TweenMax.min.js" charset="utf-8"></script>
+	<!-- //JAVASCRIPT -->
+</head>
+
+<body id="main" class="">
+	<header>
+		<!-- GNB 인클루드 -->
+		<div class="mobile">
+			<div class="head">
+				<h1><a href="/"><img src="./images/common/logo-m.png" alt="로고"></a></h1>
+				<button type="button" name="button" class="mo-gnb-open"><img src="./images/common/btn-menu-m.png"
+						alt="메뉴 오픈"></button>
+				<button type="button" name="button" class="mo-search"><img src="./images/common/btn-search-m-w.png"
+						alt="검색"></button>
+			</div>
+			<div class="m-dim"></div>
+			<div id="mobile-gnb" class="">
+				<div class="top">
+					<a href="/" class="logo"><img src="./images/common/logo-main-m.png" alt="로고"></a>
+					<a href="#" class="search"><img src="./images/common/m_search.png" alt="검색"></a>
+					<button type="button" name="button" class="mo-gnb-close"></button>
+				</div>
+				<div class="body">
+					<div class="mobile-util">
+						<a href="#">로그인</a>
+						<a href="#">회원가입</a>
+						<a href="#">FAQ</a>
+					</div>
+					<ul class="nav">
+						<li>
+							<button type="button">SJS소개</button>
+							<ul>
+								<li><a href="#">병원이념</a></li>
+								<li><a href="#">의료진소개</a></li>
+								<li><a href="#">병원둘러보기</a></li>
+								<li><a href="#">SPC소개</a></li>
+								<li><a href="#">첨단장비소개</a></li>
+								<li><a href="#">찾아오시는길</a></li>
+							</ul>
+						</li>
+						<li>
+							<button type="button">진료안내</button>
+							<ul>
+								<li><a href="#">진료시간</a></li>
+								<li><a href="#">외래진료안내</a></li>
+								<li><a href="#">입/퇴원안내</a></li>
+								<li><a href="#">증명서발급안내</a></li>
+							</ul>
+						</li>
+						<li>
+							<button type="button">목/허리</button>
+							<ul>
+								<li><a href="#">목디스크</a></li>
+								<li><a href="#">허리디스크</a></li>
+								<li><a href="#">척추관협착증</a></li>
+								<li><a href="#">척추분리증</a></li>
+								<li><a href="#">척추전방전위증</a></li>
+								<li><a href="#">요추염좌</a></li>
+								<li><a href="#">근막동통증증후군</a></li>
+							</ul>
+						</li>
+						<li>
+							<button type="button">어깨</button>
+							<ul>
+								<li><a href="#">테니스웰보</a></li>
+								<li><a href="#">오십견</a></li>
+								<li><a href="#">회전근개파열</a></li>
+								<li><a href="#">습관성어깨탈골</a></li>
+								<li><a href="#">어깨충돌증후군</a></li>
+								<li><a href="#">석회성건염</a></li>
+								<li><a href="#">결절종</a></li>
+								<li><a href="#">관절와순파열</a></li>
+								<li><a href="#">견갑골운동장애</a></li>
+							</ul>
+						</li>
+						<li>
+							<button type="button">무릎</button>
+							<ul>
+								<li><a href="#">십자인대파열</a></li>
+								<li><a href="#">반월상연골파열</a></li>
+								<li><a href="#">무릎연골연화증</a></li>
+								<li><a href="#">베이커낭종</a></li>
+								<li><a href="#">퇴행성관절염</a></li>
+							</ul>
+						</li>
+						<li>
+							<button type="button">족부</button>
+							<ul>
+								<li><a href="#">발목염좌</a></li>
+								<li><a href="#">족저근막염</a></li>
+								<li><a href="#">무지외반증</a></li>
+								<li><a href="#">아킬레스건염질환</a></li>
+								<li><a href="#">발목관절염</a></li>
+								<li><a href="#">평발</a></li>
+							</ul>
+						</li>
+						<li>
+							<button type="button">SJS클럽</button>
+							<ul>
+								<li><a href="#">병원소식</a></li>
+								<li><a href="#">전문의상담</a></li>
+								<li><a href="#">SJS TV</a></li>
+								<li><a href="#">치료후기</a></li>
+								<li><a href="#">사회공헌활동</a></li>
+								<li><a href="#">FAQ</a></li>
+							</ul>
+						</li>
+					</ul>
+					<div class="link-wrap">
+						<a href="#">병원소식</a>
+						<a href="#">전문의상담</a>
+						<a href="#">SJS TV</a>
+						<a href="#">치료후기</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- //GNB 인클루드 -->
+	</header>
+	<!-- 상단 비쥬얼 -->
+	<div class="visual-wrap">
+		<ul class="view">
+			<li class="on">
+				<style>
+					/* Mobile */
+					.mobile .view>li:nth-child(1):before {
+						background-image: url('./images/main/mv01.jpg');
+					}
+				</style>
+				<div class="text-wrap">
+					<em>그라운드와 일상생활로의 빠른 복귀를 위하여 SJS만의 차별화된 프로그램을 진행하고 있습니다.</em>
+					<span>SPORTS MEDICAL CLINIC <br>return to play!</span>
+				</div>
+			</li>
+
+			<li>
+				<style>
+					/* Mobile */
+					.mobile .view>li:nth-child(2):before {
+						background-image: url('./images/main/mv02.jpg');
+					}
+				</style>
+				<div class="text-wrap">
+					<em>22그라운드와 일상생활로의 빠른 복귀를 위하여 SJS만의 차별화된 프로그램을 진행하고 있습니다.</em>
+					<span>22SPORTS MEDICAL CLINIC <br>return to play!</span>
+				</div>
+			</li>
+
+			<li>
+				<style>
+					/* Mobile */
+					.mobile .view>li:nth-child(3):before {
+						background-image: url('./images/main/mv03.jpg');
+					}
+				</style>
+				<div class="text-wrap">
+					<em>33그라운드와 일상생활로의 빠른 복귀를 위하여 SJS만의 차별화된 프로그램을 진행하고 있습니다.</em>
+					<span>33PORTS MEDICAL CLINIC <br>return to play!</span>
+				</div>
+			</li>
+		</ul>
+		<div class="info-wrap">
+			<a href="#" class="btn-scroll-down"><img src="/images/common/scroll_ico.png" alt="페이지 이동" /></a>
+			<div class="inner">
+				<ul class="text">
+					<li class="on">SPORTS MEDICAL CLINIC11 </li>
+					<li>SPORTS MEDICAL CLINIC22</li>
+					<li>SPORTS MEDICAL CLINIC33 </li>
+				</ul>
+				<div class="control">
+					<button type="button" class="btn-direction prev"></button>
+					<div class="circleSvg">
+						<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+							<circle class="circle" cx="50" cy="50" r="50"></circle>
+						</svg>
+						<button type="button" class="play"></button>
+					</div>
+					<button type="button" class="btn-direction next"></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 상단 비쥬얼 -->
+	<!-- 컨텐츠영역 -->
+	<div class="contents">컨텐츠영역</div>
+	<!-- //컨텐츠영역 -->
+	<!-- 하단 QUICK -->
+	<div class="quick">병원소식 / 전문의상담 / SJS TV / 치료후기</div>
+	<!-- //하단 QUICK -->
+	<!-- CONTACT -->
+	<div class="contact">contact 영역</div>
+	<!-- //CONTACT -->
+
+	<!-- FOOTER 인클루드 -->
+	<div id="footer">
+		<div class="policy">
+			<div class="inner">
+				<ul>
+					<li>
+						<div>
+							<a href="#" onclick="return false;">개인정보처리방침</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="#" onclick="return false;">서비스 이용약관</a>
+						</div>
+					</li>
+					<li>
+						<div>
+							<a href="#" onclick="return false;">환자권리장전</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="information">
+			<div class="inner">
+				<div class="logo">
+					<a href="#"><img src="./images/common/logo-footer.png" alt=""></a>
+					<div class="link">
+						<ul>
+							<li>
+								<div>
+									<a href="#" target="_blank"><img src="./images/common/ico_youtube.png" alt=""></a>
+								</div>
+							</li>
+							<li>
+								<div>
+									<a href="#" target="_blank"><img src="./images/common/ico_blog.png" alt=""></a>
+								</div>
+							</li>
+							<li>
+								<div>
+									<a href="#" target="_blank"><img src="./images/common/ico_kaka.png" alt=""></a>
+								</div>
+							</li>
+							<li>
+								<div>
+									<a href="#" target="_blank"><img src="./images/common/ico_facebook.png" alt=""></a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="info">
+					<div class="tit"></div>
+					<div class="info_list">
+						<ul>
+							<li>세종스포츠정형외과</li>
+							<li>대표자 김진수외 2명</li>
+							<li class="none_m">사업자등록번호 194-94-0911</li>
+							<li class="none none_m">주소 서울특별시 광진구 능동로 209, 대양 AI센터 1층, 2층</li>
+							<li>전화번호 02-2244-5161</li>
+							<li class="none_m">팩스 02-2244-5161</li>
+						</ul>
+					</div>
+					<p class="copyright">ⓒ 2019 SEJONG SPORTS HOSPITAL.</p>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //FOOTER 인클루드 -->
+
+</body>
+
+</html>

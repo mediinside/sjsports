@@ -1,0 +1,81 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+include_once $GP -> INC_WWW . '/count_inc.php';
+$page_title = "회원가입 &gt; 세종스포츠정형외과";
+include_once $GP -> INC_WWW . "/head.php";
+$locArr = Array(100,1);
+?>
+</head>
+<body>
+<?php include_once  $GP -> INC_WWW . "/header.php"; ?>
+<div id="pagetop">
+	<div class="background" style="background-image:url(/public/images/bg-pagetop-01.jpg);"></div>
+	<div class="contain">
+		<h2 class="title">회원가입</h2>
+		<p class="text">세종스포츠정형외과의 방문을 환영합니다.</p>
+	</div>
+</div>
+<div id="container">
+	<div class="deco-header">
+		<p class="highlight"><span>세종스포츠정형외과에</span> <br class="mb-show" /><strong>오신것을 환영합니다.</strong></p>
+		<p class="decoration tup">samsung bon hospital</p>
+	</div>
+	<div id="article">
+		<div class="contain">
+			<div id="sign-up">
+				<div class="header">
+					<i class="ip-icon-sign-logo"></i>
+					<p>이용약관 및 개인정보처리 동의 단계입니다. 1/3</p>
+				</div>
+				<form action="?" id="hd_frm" name="hd_frm" method="post" class="panel" novalidate autocomplete="off">
+                	<input type="hidden" name="agree" id="agree" />
+					<fieldset>
+						<legend>약관 및 개인정보처리방침 동의</legend>
+						<div class="agree-panel">
+							<h3 class="title">개인정보처리방침 동의(필수)</h3>
+							<div class="publish" tabindex="0">
+								<?php include "publish-privacy.txt";?>
+							</div>
+							<label class="ui-check right">
+								<input type="checkbox" value="Y" id="agree1" name="agree1" />
+								<span class="visible bicon-check"></span>
+								<span class="label">동의합니다</span>
+							</label>
+						</div><div class="agree-panel">
+							<h3 class="title">이용약관 동의(필수)</h3>
+							<div class="publish" tabindex="0">
+								<?php include "publish-terms.txt";?>
+							</div>
+							<label class="ui-check right">
+								<input type="checkbox" value="Y" id="agree2" name="agree2" />
+								<span class="visible bicon-check"></span>
+								<span class="label">동의합니다</span>
+							</label>
+						</div>
+						<button type="submit" id="img_next" class="btn-next-step"><span>다음단계</span></button>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('#hd_frm').on('submit',function(){
+		if($('#agree1:checked').val() == undefined){
+				alert('개인정보처리방침에 동의 하셔야 합니다.');
+				return false;
+			}
+			if($('#agree2:checked').val() == undefined){
+				alert('이용약관 동의에 동의 하셔야 합니다');
+				return false;
+			}
+			$('#agree').val('Y');
+
+			$('#hd_frm').attr('action','./join-entry.html');
+		});
+	});
+</script>
+<?php include_once  $GP -> INC_WWW . "/footer.php"; ?>
+</body>
+</html>

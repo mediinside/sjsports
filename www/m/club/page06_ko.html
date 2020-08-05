@@ -1,0 +1,95 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "고객의 소리 &gt; 커뮤니티 &gt; 삼성본병원";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(5,1);
+
+    $index_page = "page06.html";
+	$query_page = "query.php";
+
+	if(!$jb_code) {
+  		$jb_code="30";
+	}
+
+     $jb_mode = 'twrite';
+
+?>
+
+</head>
+<body>
+<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="pagetop">
+		<div class="background" style="background-image:url(/public/images/bg-pagetop-0<?php echo $locArr[0];?>.jpg);"></div>
+		<div class="contain">
+			<h2 class="title">고객의 소리</h2>
+			<p class="text">가족의 마음으로 정성을 다하는 <br class="mb-show" />삼성본병원입니다.</p>
+		</div>
+	</div>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="board side-strip">
+			<div class="deco-header">
+				<p class="highlight"><strong class="middle">고객의 소리</strong></p>
+				<p class="decoration tup">consultation</p>
+			</div>
+			<div class="contain guidePage">
+				<div class="board-guide">
+					<ul class="dotted">
+						<li>이용시 불편하셨던 점이나 궁금한 점 또는 칭찬할 만 한 점을 남겨주세요.</li>
+						<li>본 게시판 운영 의도와 상관 없는 글은 사전 동의 없이 삭제 또는 이동될 수 있습니다.</li>
+						<li>본 게시판의 게시물은 마이페이지에서 <strong>본인만 확인</strong>하실 수 있습니다.</li>
+					</ul>
+				</div>
+				<form method="post" id="" name="" action="?">
+                	
+					<div class="entry">
+						<div class="panel">
+							<h3 class="title">상담자 정보(선택사항)</h3>
+							<p class="tit_des">개인정보를 작성해주시면 글에 대한 회신을 빠르게 받아 보실 수 있습니다.</p>
+							<table>
+								<tbody>
+									<tr>
+										<th scope="row">이름</th><td><input type="text" class="i-text" placeholder="공백없이 입력해주세요." id="mb_name" name="mb_name" value="" style="width:384px;"></td>
+									</tr>
+									<tr>
+										<th scope="row">연락처</th>
+										<td>
+
+											<select name="mb_mobile1" id="mb_mobile1" title="휴대폰 앞자리 선택" class="i-select"><option value="">선택</option><option value="010">010</option><option value="011">011</option><option value="016">016</option><option value="017">017</option><option value="018">018</option><option value="019">019</option></select>											<span class="empty">-</span>
+											<input type="text" class="i-text" maxlength="4" id="mb_mobile2" name="mb_mobile2" value="">
+											<span class="empty">-</span>
+											<input type="text" class="i-text" maxlength="4" id="mb_mobile3" name="mb_mobile3" value="">
+										</td>
+									</tr>
+									
+									<tr>
+										<th scope="row">회신원함</th>
+										<td>
+											<label class="i-checkbox left" for="yes_agree">
+												<input type="radio" name="chk_agree" id="yes_agree"/>
+												<i class="bicon-check type"></i>
+												<span class="visible">예</span>
+											</label>
+											<label class="i-checkbox left" for="no_agree">
+												<input type="radio" name="chk_agree" id="no_agree"/>
+												<i class="bicon-check type"></i>
+												<span class="visible">아니요</span>
+											</label>
+										</td>
+									</tr>
+									
+								</tbody>
+							</table>
+							<h3 class="title">문의글 작성</h3>
+						</div>
+					</div>
+					
+				</form>
+				<?php include $GP -> INC_PATH ."/board_inc.php"; ?>
+			</div>
+		</div>
+	</div>
+<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</body>
+</html>

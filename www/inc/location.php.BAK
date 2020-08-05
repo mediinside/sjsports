@@ -1,0 +1,55 @@
+	<hr id="side-trigger">
+	<div id="location">
+		<div class="section">
+			<div class="home">
+				<a href="/"><i class="ip-icon-location-home"></i><span class="text-ir">home</span></a>
+			</div>
+			<div class="depth dp1">
+				<a href="javascript:void(0);"><span></span><i class="ip-icon-location-dropdown"></i></a>
+				<ul class="dp-section">
+					<li><a href="/intro/page01.html"><span>병원소개</span></a></li>
+					<li><a href="/center/joint/page01.html"><span>전문센터</span></a></li>
+					<li><a href="/depart/page01.html"><span>진료과</span></a></li>
+					<li><a href="/guide/page01.html"><span>병원이용안내</span></a></li>
+					<li><a href="/media/page01.html"><span>미디어센터</span></a></li>
+				</ul>
+			</div>
+			<div class="depth dp2">
+				<a href="javascript:void(0);"><span></span><i class="ip-icon-location-dropdown"></i></a>
+				<ul class="dp-section"></ul>
+			</div>
+			<?php if($locArr[2]) { ?>
+			<div class="depth dp3">
+				<a href="javascript:void(0);"><span></span><i class="ip-icon-location-dropdown"></i></a>
+				<ul class="dp-section"></ul>
+			</div>
+			<?php } ?>
+		</div>
+	</div>
+	<!-- <div id="aside" class="side-visible">
+		<h2 class="title tup">Quick Menu</h2>
+		<div class="contain">
+			<ul class="list">
+				<li><a href="https://pf.kakao.com/_Ynxlxaxl" target="_blank">
+					<i class="ip-icon-aside-kakao"></i>
+					<span>카카오톡</span>
+				</a></li>
+				<li><a href="/guide/page04.html">
+					<i class="ip-icon-aside-reserve"></i>
+					<span>온라인예약</span>
+				</a></li>
+				<li><a href="/guide/page02.html">
+					<i class="ip-icon-aside-guide"></i>
+					<span>진료안내</span>
+				</a></li>
+				<li><a href="/guide/page09.html">
+					<i class="ip-icon-aside-docs"></i>
+					<span>증명서발급</span>
+				</a></li>
+				<li><a href="/intro/page05.html">
+					<i class="ip-icon-aside-address"></i>
+					<span>오시는 길</span>
+				</a></li>
+			</ul>
+		</div>
+	</div> -->

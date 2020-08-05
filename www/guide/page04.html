@@ -1,0 +1,176 @@
+<?php
+	include_once $_SERVER['DOCUMENT_ROOT'] . '/_init.php';
+	include_once $GP -> INC_WWW . '/count_inc.php';
+	$page_title = "온라인예약 &gt; 병원이용안내 &gt; 삼성본병원";
+	include_once $GP -> INC_WWW . '/head.php';
+	$locArr = array(4,1);
+    $arr_mobile = explode("-", $_SESSION['suserphone']);
+    $mb_mobile1 = $arr_mobile[0];
+    $mb_mobile2 = $arr_mobile[1];
+    $mb_mobile3 = $arr_mobile[2];
+ 	$sel_mobile = $C_Func->makeSelect('mb_mobile1', $GP -> MOBILE , $mb_mobile1, " title='휴대폰 앞자리 선택' class='i-select' ",'선택');
+    
+
+?>
+</head>
+<body>
+<?php include_once $GP -> INC_WWW . '/header.php';?>
+	<div id="pagetop">
+		<div class="background" style="background-image:url(/public/images/bg-pagetop-04.jpg);"></div>
+		<div class="contain">
+			<h2 class="title">온라인예약</h2>
+			<p class="text">가족의 마음으로 정성을 다하는 <br class="mb-show" />삼성본병원입니다.</p>
+		</div>
+	</div>
+	<div id="container">
+		<?php include_once $GP -> INC_WWW . '/location.php';?>
+		<div id="article" class="reserve side-strip">
+			<div class="deco-header">
+				<p class="highlight"><strong class="middle">간편 예약으로 쉽고 <br class="mb-show" />간편하게 이용하세요.</strong></p>
+				<p class="decoration tup">samsung bon reservation</p>
+			</div>
+			<div class="contain">
+				<div class="guide">
+					<i class="ip-icon-reserve-guide"></i>
+					<ul class="list">
+						<li>간편예약을 이용하시면 전문 상담원이 빠른 예약을 도와드립니다. <br />예약 가능시간 : <span class="point">평일(09:00 ~ 17:30), 토요일(09:00 ~ 12:30)</span></li>
+						<li><font color="#ff5675">온라인예약은 예약 확정이 아닙니다.</font> 접수 후 다음 날 순차적으로 전화 확인 후 예약 확정 됩니다. (일요일, 공휴일 불가)</li>
+						<li>당일진료는 전화 문의 바랍니다.</li>
+						<li>예약 취소 및 변경은 <span class="point">1522-7525</span> 로 문의바랍니다.</li>
+						<li>건강검진센터 예약 및 문의는 <span class="point">010-2263-7525</span> 로 문의바랍니다.</li>
+					</ul>
+				</div>
+				<form method="post" id="frm_ps" name="frm_ps" action="?">
+                	<input type="hidden" id="mode" name="mode" value="PS_REG" />
+					<div class="entry">
+						<div class="panel">
+							<h3 class="title">상담자 정보</h3>
+							<table>
+								<tbody>
+									<tr>
+										<th scope="row">이름</th><td><input type="text" class="i-text" placeholder="공백없이 입력해주세요." id="mb_name" name="mb_name"  value="<?=$_SESSION['susername']?>" /></td>
+									</tr>
+									<tr>
+										<th scope="row">휴대폰</th><td>
+											<?=$sel_mobile?>
+											<span class="empty">-</span>
+											<input type="text" class="i-text" maxlength="4" id="mb_mobile2" name="mb_mobile2" value="<?=$mb_mobile2?>" />
+											<span class="empty">-</span>
+											<input type="text" class="i-text" maxlength="4" id="mb_mobile3" name="mb_mobile3" value="<?=$mb_mobile3?>" />
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">진료구분</th><td>
+											<label class="i-checkbox left">
+												<input type="radio" id="tfc_gubun" name="tfc_gubun" value="Y" />
+												<i class="bicon-check type"></i>
+												<span class="visible">초진</span>
+											</label>
+											<label class="i-checkbox left">
+												<input type="radio" id="tfc_gubun" name="tfc_gubun" value="N" />
+												<i class="bicon-check type"></i>
+												<span class="visible">재진</span>
+											</label>
+										</td>
+									</tr>
+									<tr>
+										<th scope="row">진료과목</th><td>
+                                        <select  class="i-select" id="tfc_type" name="tfc_type">
+                                        	<option value="">선택</option>
+                                        	<option value="1">척추센터</option>
+                                            <option value="2">관절센터</option>
+                                            <option value="3">내과</option>
+                                            <option value="4">외과</option>
+                                            <option value="5">소아청소년과</option>
+                                        </select><small>(선택)</small></td>
+									</tr>
+									<tr>
+										<th scope="row">희망일</th><td>
+                                        <select  class="i-select" id="tfc_date" name="tfc_date">
+                                        	<option value="">선택</option>
+                                        </select><small>(선택)</small></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="panel agree">
+							<div class="publish"><?php include_once "../member/publish-privacy.txt"; ?></div>
+							<label class="ui-check">
+								<input type="checkbox" value="Y" id="agree2" name="agree2"/>
+								<span class="visible bicon-check"></span>
+								<span class="label">위의 개인정보 수집 처리에 동의합니다.</span>
+							</label>
+						</div>
+					</div>
+					<button class="btn-submit" id="img_submit">예약 신청</button>
+				</form>
+			</div>
+			<?php include_once "connect.html"; ?>
+		</div>
+	</div>
+<script type="text/javascript">
+
+	$(document).ready(function(){	
+	
+		$('#tfc_date').click(function(){
+			 var tfc_date = $('#tfc_date').val();
+			$.ajax({
+				type: "POST",
+				url: "/guide/date_ajax.php",
+				data: "tfc_date=" + tfc_date,
+				dataType: "text",
+				success: function(data) {
+				//	alert("val set="+data);
+					$('#tfc_date'). empty();
+					$('#tfc_date'). append('<option value=""> 선택</option>');
+					$('#tfc_date'). append(data);
+				},
+				error: function(xhr, status, error) { alert(error); }
+			});
+		});
+		
+		$('#img_submit').click(function(){
+			if($('#mb_name').val() == '')	{
+				alert('이름을 입력하세요');
+				$('#mb_name').focus();
+				return false;
+			}
+			
+			if($('#mb_mobile1').val() == '')	{
+			alert('핸드폰 번호를 입력해주세요');
+			$('#mb_mobile1').focus();
+			return false;
+			}
+	
+			if($('#mb_mobile2').val() == '')	{
+				alert('핸드폰 번호를 입력해주세요');
+				$('#mb_mobile2').focus();
+				return false;
+			}
+	
+			if($('#mb_mobile3').val() == '')	{
+				alert('핸드폰 번호를 입력해주세요');
+				$('#mb_mobile3').focus();
+				return false;
+			}
+	
+			if(!$(':input:radio[name=tfc_gubun]:checked').val()) {
+				alert("진료구분을 선택해주세요.");
+				return false;
+			}
+
+			if($('input:checkbox[name="agree2"]:checked').val() != "Y" ) {
+				alert("개인정보 처리방침 동의가 필요한 서비스 입니다. ");
+				return false;
+			}
+
+		$('#frm_ps').attr('action','/admin/phone/proc/phone_proc.php');
+		$('#frm_ps').submit();
+		return false;
+
+	});
+	});
+</script>
+<?php include_once $GP -> INC_WWW . '/footer.php';?>
+</body>
+</html>
